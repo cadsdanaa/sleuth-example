@@ -1,0 +1,2 @@
+otherserver:
+  url: ${otherserver}

@@ -1,0 +1,20 @@
+version: '3'
+services:
+  sleuth1:
+    build: .
+    ports:
+      - "8080:8080"
+    hostname: sleuth1
+    environment:
+      - server.port=8080
+      - otherserver=http://sleuth2:8081
+      - spring.application.name=Sleuth1
+  sleuth2:
+    build: .
+    hostname: sleuth2
+    ports:
+      - "8081:8081"
+    environment:
+      - server.port=8081
+      - otherserver=http://sleuth1:8081
+      - spring.application.name=Sleuth2
