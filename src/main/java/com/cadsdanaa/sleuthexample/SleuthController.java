@@ -23,18 +23,18 @@ public class SleuthController {
         this.goServerUrl = goServerUrl;
     }
 
-    @GetMapping("/something")
+    @GetMapping("/trace")
     public String doSomething() {
         String currentTraceId = tracer.currentSpan().context().traceIdString();
         String externalTraceId = someService.callExternalService();
-        return "My Trace Id: " + currentTraceId + " --- Trace Id from downstream apps: " + externalTraceId;
+        return "My Trace Id: " + currentTraceId + " --- Trace Id from downstream app on different port: " + externalTraceId;
     }
 
-    @GetMapping("/someOtherThing")
+    @GetMapping("/someOtherEndpoint")
     public String doSomethingElse() {
         String currentTraceId = tracer.currentSpan().context().traceIdString();
         log.info("My Trace Id: {}", currentTraceId);
-        String goResponse = restTemplate.getForObject(goServerUrl + "/goThing", String.class);
+        String goResponse = restTemplate.getForObject(goServerUrl + "/goTrace", String.class);
         log.info("Trace Id from Go service: {}", goResponse);
         return currentTraceId + " --- Trace Id in Go app running on different port: " + goResponse;
     }

@@ -16,7 +16,7 @@ public class SomeService {
     }
 
     public String callExternalService() {
-        return restTemplate.getForObject(javaServerUrl + "/someOtherThing", String.class);
+        return restTemplate.getForObject(javaServerUrl + "/someOtherEndpoint", String.class);
     }
 
 }

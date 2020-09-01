@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/goThing", someHandler)
+	http.HandleFunc("/goTrace", someHandler)
 	err := http.ListenAndServe(":8082", nil)
 	if err != nil {
 		log.Fatal("Failed to listen on port 8082...")
