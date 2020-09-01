@@ -3,7 +3,7 @@
 This application showcases a simple example of Spring Cloud Sleuth's tracing capabilities.
 It focuses strictly on traceability for HTTP requests however it does posses the capability in a very similar out of the box fashion for Kafka and RabbitMQ.
 
-#How To Run
+# How To Run
 
 Simply execute the script file in the `docker` folder (`run-sleuth-example.sh`) which will build and run the docker containers.
 The containers simply contain an instance of the spring boot app running on port 8080 and 8081.
@@ -14,7 +14,7 @@ The response of the previous url will be the trace ids that Sleuth uses in each 
 
 As we would expect they should be the same for each container since this represents our microservice ecosystem. This shows how we can trace messages at a larger scale.
 
-#Other Notes
+# Other Notes
 
 Our example has a Go app receiving the Sleuth headers and returning the values. To continue with this pattern in a non-Java language you can simply attach those headers to subsequent requests manually.
 Once the request makes it back to the Spring Boot ecosystem it will again be handled automatically for you.
