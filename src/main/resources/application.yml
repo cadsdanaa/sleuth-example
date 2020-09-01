@@ -1,2 +1,4 @@
-otherserver:
-  url: ${otherserver}
+other-java-server:
+  url: ${java-server}
+other-go-server:
+  url: ${go-server}

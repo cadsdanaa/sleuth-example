@@ -1,6 +1,5 @@
 package com.cadsdanaa.sleuthexample;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -15,8 +14,8 @@ public class SleuthExampleApplication {
 	}
 
 	@Bean
-	public RestTemplate restTemplate(@Value("${otherserver.url}") String otherServerBaseUrl) {
-		return new RestTemplateBuilder().rootUri(otherServerBaseUrl).build();
+	public RestTemplate restTemplate() {
+		return new RestTemplateBuilder().build();
 	}
 
 }

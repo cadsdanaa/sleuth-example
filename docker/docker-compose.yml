@@ -1,20 +1,27 @@
 version: '3'
 services:
-  sleuth1:
+  java-sleuth1:
     build: .
     ports:
       - "8080:8080"
-    hostname: sleuth1
+    hostname: java-sleuth1
     environment:
       - server.port=8080
-      - otherserver=http://sleuth2:8081
-      - spring.application.name=Sleuth1
-  sleuth2:
+      - java-server=http://java-sleuth2:8081
+      - go-server=http://go-sleuth3:8082
+      - spring.application.name=JavaSleuth1
+  java-sleuth2:
     build: .
-    hostname: sleuth2
+    hostname: java-sleuth2
     ports:
       - "8081:8081"
     environment:
       - server.port=8081
-      - otherserver=http://sleuth1:8081
-      - spring.application.name=Sleuth2
+      - java-server=http://java-sleuth1:8081
+      - go-server=http://go-sleuth3:8082
+      - spring.application.name=JavaSleuth2
+  go-sleuth3:
+    build: ../go
+    hostname: go-sleuth3
+    ports:
+      - "8082:8082"

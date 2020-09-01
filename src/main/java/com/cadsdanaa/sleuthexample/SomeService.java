@@ -1,17 +1,22 @@
 package com.cadsdanaa.sleuthexample;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
 public class SomeService {
 
-    @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
+    private String javaServerUrl;
+
+    public SomeService(RestTemplate restTemplate, @Value("${other-java-server.url}") String javaServerUrl) {
+        this.restTemplate = restTemplate;
+        this.javaServerUrl = javaServerUrl;
+    }
 
     public String callExternalService() {
-        return restTemplate.getForObject("/someOtherThing", String.class);
+        return restTemplate.getForObject(javaServerUrl + "/someOtherThing", String.class);
     }
 
 }
